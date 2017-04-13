@@ -1,0 +1,13 @@
+﻿.full-page
+  .col-md-12
+    .row
+      .btn-group.isotope-buttons(opt-kind="", ok-key="filter", id="filters")
+        button.btn.btn-primary.active(type="button", ok-sel="*") Show all
+        button.btn.btn-orange.col-md-1(ng-repeat="manufacturer in manufacturers | orderBy: manufacturer", type="button", ok-sel=".{{manufacturer}}") {{manufacturer}}
+
+  .col-md-12
+    .row
+      .isotope
+        ul(isotope-container="isotope-container", class="draggable-items", iso-use-init-event='true')
+          li.element-item(ng-repeat="bike in bikes track by $index", isotope-item="isotope-item" class="{{bike.Manufacturer}}")
+            one-bike(data='bike', compare='compare')

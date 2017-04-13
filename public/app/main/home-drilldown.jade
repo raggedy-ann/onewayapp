@@ -1,0 +1,39 @@
+﻿div(ng-controller="HomeDrilldownController", style="min-height:400px")
+  .section.section-dark
+    .container(ng-show="mode == 'manufacturer'")
+      .row
+        .col-md-12
+          .section-title
+            h1 Popular Bikes 
+    .container(ng-hide="mode == 'manufacturer'")
+      .row
+        .col-md-12
+          .section-title
+            h1
+              a(href="#", ng-click="reset()") Popular Bikes / 
+              span(ng-show="mode == 'category'") {{manufacturer}}
+              a(href="#", ng-click="setManufacturer(manufacturer)", ng-show="mode == 'model'") {{manufacturer}} / 
+              span(ng-show="mode == 'model'") {{category}}
+
+  .section(ng-hide="mode != 'manufacturer'")
+    .grid.cs-style-3
+      .col-md-3(ng-repeat="set in drilldown | orderBy: '_id.manufacturer'")
+        a(href="#", ng-click="setManufacturer(set._id.manufacturer)")
+          figure
+            img(src="img/manufacturers/{{set._id.manufacturer}}.png")
+            figcaption
+              h3 {{set._id.manufacturer}}
+              span {{set._id.count}} item(s) found
+
+  .section(ng-hide="mode != 'category'")
+    .grid.cs-style-3
+      .col-md-3(ng-repeat="set in categoriesOfManufacturer | orderBy: 'category'")
+        a(href="#", ng-click="setCategory(set.category)")
+          figure
+            img(src="img/categories/{{set.category}}.png")
+            figcaption
+              h3 {{set.category}}
+              span {{set.count}} items found
+
+  .section(ng-hide="mode != 'model'")
+    bike-thumbnails(data='bikesOfCategory', compare='compare')

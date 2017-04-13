@@ -1,0 +1,10 @@
+﻿div.row(ng-controller="ToCompareController")
+  .col-md-12
+    .comparing-wrapper
+      .col-md-10.comparing-section
+        i(ng-hide="bikesToCompare.length > 0") Add bikes to start a compare
+        span(ng-repeat="bike in bikesToCompare") 
+          a.comparing-item(href="/bikes/{{bike._id}}") {{bike.Manufacturer}} {{bike.Model}}
+          a.comparing-dismiss(href="#" ng-click="removeBike(bike._id)") x
+      .col-md-2
+        a.btn.btn-primary.pull-right(href="/compare", ng-disabled="bikesToCompare.length < 2") Compare

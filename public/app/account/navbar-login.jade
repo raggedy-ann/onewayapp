@@ -1,0 +1,24 @@
+﻿.navbar-right(ng-controller="NavBarLoginController")
+  form.navbar-form(ng-hide="identity.isAuthenticated()")
+    ul.nav.navbar-nav.signup
+        li
+          a(href="/signup") Sign Up
+    .form-group
+      input.form-control(placeholder="Username", ng-model="username")
+    .form-group
+      input.form-control(type="password", placeholder="Password", ng-model="password")
+    button.btn.btn-primary(ng-click="signin(username, password)") Sign In
+  ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+    li.dropdown
+      a.dropdown-toggle(href="", data-toggle="dropdown")
+        | {{identity.getUser().firstName + " " + identity.getUser().lastName}} 
+        b.caret
+      ul.dropdown-menu
+        li(ng-show="identity.isAdmin()")
+          a(href="/admin/users") User admin
+        li
+          a(href="/history") Compare history
+        li
+          a(href="/profile") Profile
+        li
+          a(href="", ng-click="signout()") Sign Out

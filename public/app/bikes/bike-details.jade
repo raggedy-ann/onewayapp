@@ -1,0 +1,93 @@
+﻿.section.section-breadcrumbs
+  .container
+    .row
+      .cold-md-12
+        h1 Zoom in
+
+.section
+  .container
+    .row
+      .col-sm-8
+        .blog-post.blog-single-post
+          .single-post-title
+            h2 {{bike.Manufacturer}} {{bike.Model}}
+          .single-post-image
+            img(ng-src="{{bike.ImageXL}}")
+          .single-post-info
+            i.glyphicon.glyphicon-time 
+            {{bike.Year}}
+            i.glyphicon.glyphicon-road.margin-left-med
+            {{bike.Category}}
+            .pull-right
+              a.btn.btn-orange(href="#", ng-click="compare.toggleBike(bike._id)") {{compare.getToggleCompareText(bike._id)}}
+          .single-post-content
+            h3 Engine specs
+            p.left Engine type
+            p {{bike.EngineType}}
+            p.left Engine displacement
+            p {{bike.EngineDisplacement}}
+            p.left Bore and stroke
+            p {{bike.BoreAndStroke}}
+            p.left Compression ratio
+            p {{bike.CompressionRatio}}
+            p.left Cooling
+            p {{bike.Cooling}}
+            p.left Fuel system
+            p {{bike.FuelSystem}}
+            p.left Ignition
+            p {{bike.Ignition}}
+            p.left Starting system
+            p {{bike.StartingSystem}}
+            p.left Transmission
+            p {{bike.Transmission}}
+            p.left Final drive
+            p {{bike.FinalDrive}}
+            br
+
+            h3 Chassis specs
+            p.left Rake and trail
+            p {{bike.RakeAndTrail}}
+            p.left Front suspension
+            p {{bike.FrontSuspension}}
+            p.left Rear suspension
+            p {{bike.RearSuspension}}
+            br
+
+            h3 Dimensions
+            p.left Wheelbase
+            p {{bike.WheelBase}}
+            p.left Seat height
+            p {{bike.SeatHeight}}
+            p.left Fuel capacity
+            p {{bike.FuelCapacity}}
+            p.left Dry weight
+            p {{bike.DryWeight}}
+            br
+
+            h3 Miscellaneous specs
+            p.left Front brake
+            p {{bike.FrontBrake}}
+            p.left Rear brake
+            p {{bike.RearBrake}}
+            p.left Front tire
+            p {{bike.FrontTire}}
+            p.left Rear tire
+            p {{bike.RearTire}}
+
+
+      .col-sm-4.blog-sidebar
+        h4(ng-hide="moreOfCategoryManufacturer.length === 0") More in this category from {{bike.Manufacturer}} 
+        ul.recent-posts(ng-hide="moreOfCategoryManufacturer.length === 0")
+          li(ng-repeat="suggested in moreOfCategoryManufacturer")
+            a(href="/bikes/{{suggested._id}}") {{suggested.Manufacturer}} {{suggested.Model}}
+        h4(ng-hide="moreOfManufacturer.length === 0") More bikes from {{bike.Manufacturer}}
+        ul.recent-posts(ng-hide="moreOfManufacturer.length === 0")
+          li(ng-repeat="suggested in moreOfManufacturer")
+            a(href="/bikes/{{suggested._id}}") {{suggested.Manufacturer}} {{suggested.Model}}  
+        h4 Alternatives from other manufacturers
+        ul.recent-posts
+          li(ng-repeat="suggested in moreOfCategory")
+            a(href="/bikes/{{suggested._id}}") {{suggested.Manufacturer}} {{suggested.Model}} 
+
+script.
+  window.scrollTo(0, 0);

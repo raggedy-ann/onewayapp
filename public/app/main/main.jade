@@ -1,0 +1,7 @@
+﻿div(ng-controller="HomeCarouselController")
+  carousel.main-carousel(interval="myInterval")
+    slide(ng-repeat="slide in slides", active="slide.active")
+      img(ng-src="{{slide.image}}")
+      .carousel-caption
+.full-page(ng-include="'partials/main/home-drilldown'")
+div(ng-include="'partials/main/tech'")

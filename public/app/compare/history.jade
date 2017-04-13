@@ -1,0 +1,23 @@
+﻿.section.section-breadcrumbs
+  .container
+    .row
+      .col-md-12
+        h1 Your compare history
+.section
+  .container
+    .featured-news
+      .row.history(ng-repeat="compare in compares | orderBy: 'date':true")
+        table(style="width:100%")
+          tr
+            td
+              a.history-row(ng-repeat="bike in compare.bikes", href="/bikes/{{bike._id}}")
+                .title {{bike.Manufacturer}} {{bike.Model}}
+                img(ng-src="{{bike.ImageL}}")
+            td(style="vertical-align:bottom")
+              a.top-margin-small.btn.btn-orange.pull-right.redo(ng-click="redoCompare(compare.bikes)") Redo compare
+          tr
+            td 
+              i On {{compare.date | date : 'MM/dd/yyyy'}}
+        hr.history-divider
+        
+        

@@ -1,0 +1,33 @@
+﻿.section.section-breadcrumbs
+  .container
+    .row
+      .col-md-12
+        h1 Users
+.container
+  .well
+    table.table.table-hover.table-striped
+      thead
+        th Username
+        th Email
+        th Name
+        th Roles
+        th 
+      tbody
+        tr(ng-repeat="user in users")
+          td {{user.username}}
+          td {{user.email}}
+          td {{user.name}}
+          td {{user.roles}}
+          td
+            button.btn(
+              ng-disabled="isAdmin(user)", 
+              mwl-confirm
+              title="Confirm delete",
+              message="Are you sure you want to delete this user?",
+              confirm-text="Delete",
+              confirm-cancel="Cancel",
+              is-open="isOpen"
+              placement="right",
+              on-confirm="delete(user)",
+              confirm-button-type="orange") Delete
+          

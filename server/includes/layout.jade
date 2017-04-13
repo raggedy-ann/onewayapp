@@ -1,0 +1,26 @@
+﻿doctype
+html
+  head
+    title One Way
+    link(href="/favicon.ico", rel="shortcut icon", type="image/x-icon")
+    link(rel="stylesheet", type="text/css", href="/css/bootstrap.css")
+    link(rel="stylesheet", type="text/css", href="/vendor/toastr/toastr.css")
+    link(rel="stylesheet", type="text/css", href="/vendor/angular-loading-bar/build/loading-bar.min.css")
+    link(rel="stylesheet", type="text/css", href="/css/site.css")
+
+    link(rel="stylesheet", type="text/css", href="/css/main.css")
+    link(rel="stylesheet", type="text/css", href="/css/custom.css")
+    script(src="//use.edgefonts.net/bebas-neue.js")
+
+    link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800")
+    link(rel="stylesheet", type="text/css", href="/css/icomoon-social.css")
+    link(rel="stylesheet", type="text/css", href="/css/font-awesome.min.css")
+
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+        
+  body(ng-app='app' ng-csp)
+    include currentUser
+    
+    block main-content
+    
+    include scripts

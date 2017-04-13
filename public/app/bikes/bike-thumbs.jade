@@ -1,0 +1,63 @@
+﻿div.full-page(ng-controller="BikeThumbnailsController")
+  .section.section-dark
+    .container(ng-show="mode == 'manufacturer'")
+      .row
+        .col-md-12
+          .section-title
+            h1 Bikes
+    .container(ng-show="mode == 'search'")
+      .row
+        .col-md-12
+          .section-title
+            h1
+              span Searching / 
+              a(href="#", ng-click="reset()") Reset
+    .container(ng-hide="mode == 'manufacturer' || mode == 'search'")
+      .row
+        .col-md-12
+          .section-title
+            h1
+              a(href="#", ng-click="reset()") Bikes / 
+              span(ng-show="mode == 'category'") {{manufacturer}}
+              a(href="#", ng-click="setManufacturer(manufacturer)", ng-show="mode == 'model'") {{manufacturer}} / 
+              span(ng-show="mode == 'model'") {{category}}
+
+  .section
+    .container
+      .row
+        .col-md-8
+        .col-md-4
+          form(ng-submit="applySearch()")
+            .input-group.pull-right
+              input.form-control(type="text", ng-model="searchText")
+              span.input-group-btn
+                button.btn(type="submit") Search
+  div(ng-hide="mode != 'search'")
+    .container
+      .row
+        bike-thumbnails(data='cachedBikes', compare='compare')
+
+  div(ng-hide="mode != 'manufacturer'")
+    .grid.cs-style-3.container
+      .col-md-4(ng-repeat="set in manufacturers | orderBy: 'manufacturer'")
+        a(href="#", ng-click="setManufacturer(set.manufacturer)")
+          figure
+            img(src="img/manufacturers/{{set.manufacturer}}.png")
+            figcaption
+              h3 {{set.manufacturer}}
+              span {{set.count}} items found
+            
+  div(ng-hide="mode != 'category'")
+    .grid.cs-style-3.container
+      .col-md-4(ng-repeat="set in categoriesOfManufacturer | orderBy: '_id'")
+        a(href="#", ng-click="setCategory(set._id)")
+          figure
+            img(src="img/categories/{{set._id}}.png")
+            figcaption
+              h3 {{set._id}}
+              span {{set.count}} items found
+
+  div(ng-hide="mode != 'model'")
+    .container
+      .row
+        bike-thumbnails(data='bikesOfCategory', compare='compare')

@@ -1,0 +1,32 @@
+extends ../includes/layout
+
+block main-content
+  header.navbar.navbar-inverse.navbar-fixed-top(role="banner")
+    .container
+      .navbar-header
+        button.navbar-toggle(type="button", data-toggle="collapse" data-target=".navbar-collapse")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href="/"): img(src="/img/logo.png")
+      .navbar-collapse.collapse
+        ul.nav.navbar-nav.menu
+          li
+            a(href="/bikes") Bikes
+          li
+            a(href="/bikes-th") Search
+        div(ng-include="'/partials/account/navbar-login'")
+
+  div.content(ng-view)
+
+  .footer
+    .container
+      .row(ng-include="'/partials/compare/to-compare'")
+      .row
+        .footer-copyright 
+          label &#xA9; 2015 MEAN stack training &nbsp;
+          a(href="https://www.mongodb.org/") MongoDB | 
+          a(href="http://expressjs.com/") Express.js | 
+          a(href="https://angularjs.org/") Angular.js | 
+          a(href="https://nodejs.org/") Node.js

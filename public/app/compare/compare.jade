@@ -1,0 +1,111 @@
+﻿.section.section-breadcrumbs
+  .container
+    .row
+      .col-md-12
+        h1 Comparing
+.container
+  .alert.alert-warning(ng-show="bikes.length < 2") There need to be at least 2 motorcycles to compare! Browse our comprehensive 
+    a(href="/bikes") motorcycles page 
+    span or use the 
+    a(href="/bikes-th") search 
+    span page.
+
+table.table.table-hover.table-striped.table-condensed.comparing-layout(ng-show="bikes.length >= 2")
+  thead
+    tr
+      th
+      th.team-member(ng-repeat="bike in bikes", style="text-align: center")
+        .team-member-photo
+          a(href="/bikes/{{bike._id}}")
+            img(ng-src="{{bike.ImageL}}")
+        a.btn.btn-orange.pull-right(ng-click="removeBike(bike._id)") Remove
+  tbody
+    tr
+      td.spec-type(colspan="{{bikes.length + 2}}") Description
+    tr
+      td Make
+      td(ng-repeat="bike in bikes")
+        strong {{bike.Manufacturer}}
+    tr
+      td Model
+      td(ng-repeat="bike in bikes") 
+        strong {{bike.Model}}
+    tr
+      td Year
+      td(ng-repeat="bike in bikes") {{bike.Year}}
+    tr
+      td Category
+      td(ng-repeat="bike in bikes") {{bike.Category}}
+    tr
+      td.spec-type(colspan="{{bikes.length + 2}}") Engine
+    tr
+      td Engine type
+      td(ng-repeat="bike in bikes") {{bike.EngineType}}
+    tr
+      td Engine displacement
+      td(ng-repeat="bike in bikes") {{bike.EngineDisplacement}}
+    tr
+      td Bore and stroke
+      td(ng-repeat="bike in bikes") {{bike.BoreAndStroke}}
+    tr
+      td Compression ratio
+      td(ng-repeat="bike in bikes") {{bike.CompressionRatio}}
+    tr
+      td Cooling
+      td(ng-repeat="bike in bikes") {{bike.Cooling}}
+    tr
+      td Fuel system
+      td(ng-repeat="bike in bikes") {{bike.FuelSystem}}
+    tr
+      td Ignition
+      td(ng-repeat="bike in bikes") {{bike.Ignition}}
+    tr
+      td Starting system
+      td(ng-repeat="bike in bikes") {{bike.StartingSystem}}
+    tr
+      td Transmission
+      td(ng-repeat="bike in bikes") {{bike.Transmission}}
+    tr
+      td Final drive
+      td(ng-repeat="bike in bikes") {{bike.FinalDrive}}
+    tr
+      td.spec-type(colspan="{{bikes.length + 2}}") Chassis
+    tr
+      td Rake and trail
+      td(ng-repeat="bike in bikes") {{bike.RakeAndTrail}}
+    tr
+      td Front suspension
+      td(ng-repeat="bike in bikes") {{bike.FrontSuspension}}
+    tr
+      td Rear suspension
+      td(ng-repeat="bike in bikes") {{bike.RearSuspension}}
+    tr
+      td.spec-type(colspan="{{bikes.length + 2}}") Dimensions
+    tr
+      td Wheelbase
+      td(ng-repeat="bike in bikes") {{bike.WheelBase}}
+    tr
+      td Seat height
+      td(ng-repeat="bike in bikes") {{bike.SeatHeight}}
+    tr
+      td Fuel capacity
+      td(ng-repeat="bike in bikes") {{bike.FuelCapacity}}
+    tr
+      td Dry weight
+      td(ng-repeat="bike in bikes") {{bike.DryWeight}}
+    tr
+      td.spec-type(colspan="{{bikes.length + 2}}") Miscellaneous
+    tr
+      td Front brake
+      td(ng-repeat="bike in bikes") {{bike.FrontBrake}}
+    tr
+      td Rear brake
+      td(ng-repeat="bike in bikes") {{bike.RearBrake}}
+    tr
+      td Front tire
+      td(ng-repeat="bike in bikes") {{bike.FrontTire}}
+    tr
+      td Rear tire
+      td(ng-repeat="bike in bikes") {{bike.RearTire}}
+    
+     
