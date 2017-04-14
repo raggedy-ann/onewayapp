@@ -1,11 +1,11 @@
 {
   "name": "OneWay",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "OneWay MEAN stack training",
   "main": "server.js",
   "author": {
-    "name": "LauraLungoci",
-    "email": "laura.lungci@isdc.eu"
+    "name": "Laura",
+    "email": "lungoci.laura@gmail.com"
   },
   "dependencies": {
     "body-parser": "^1.10.1",
